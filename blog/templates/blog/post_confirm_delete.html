@@ -14,6 +14,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'blog/bootstrap/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+  <script src="https://kit.fontawesome.com/765d008ba4.js" crossorigin="anonymous"></script>
 
   <!-- Custom styles for this template -->
   <link href="{% static 'blog/css/blog-post.css' %}" rel="stylesheet">
@@ -75,13 +76,31 @@
         <hr>
 
         <!-- Preview Image -->
-        <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="">
+
+            {% if post.head_image %}
+            <img class="img-fluid rounded" src="{{ post.head_image.url }}" alt="{{ post.title }} head image">
+            {% else %}
+            <img class="img-fluid rounded" src="http://picsum.photos/seed/{{ post.id }}/800/200" alt="random image">
+            {% endif %}
 
         <hr>
 
         <!-- Post Content -->
-
         <p>{{ post.content }}</p>
+
+        {% if post.file_upload %}
+        <a href="{{ post.file_upload.url }}" role="button" class="btn btn-primary" download>
+          Download:
+          {% if post.get_file_ext == 'pdf'%}
+          <i class="fas fa-file-pdf"></i>
+          {% elif post.get_file_ext == 'xlsx' or post.get_file_ext == 'xls'%}
+          <i class="fas fa-file-excel"></i>
+          {% else %}
+          <i class="fas fa-file-alt"></i>
+          {% endif %}
+
+        {{ post.get_file_name }}</a>
+        {% endif %}
 
         <hr>
 
