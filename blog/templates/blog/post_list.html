@@ -84,9 +84,9 @@
 
       <div class="container my-3">
         <div class="row">
-          <div class="col-md-8 col-lg-9">
+          <div class="col-md-8 col-lg-9" id="main-area">
             <h1>김서연의 블로그</h1>
-
+            {% if post_list.exists %}
 
         <!-- Blog Post -->
         {% for p in post_list %}
@@ -114,6 +114,9 @@
                 </div>
             </div>
               {% endfor %}
+              {% else %}
+              <h3>아직 게시물이 없습니다.</h3>
+              {% endif %}
 
 
                       <!-- Pagination -->
