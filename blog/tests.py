@@ -14,6 +14,7 @@ class TestView(TestCase):
 
         soup = BeautifulSoup(response.content, 'html.parser')
         self.assertEqual(soup.title.text, '김서연의 블로그')
+        self.assertIn('About Me', navbar.text)
 
         navbar = soup.nav
 

@@ -6,7 +6,7 @@ from django.views.generic import ListView, DeleteView
 class PostList(ListView):
     model = Post
     ordering = '-pk'
-    # template_name = 'blog/post_list.html'
+    # template_name = 'blog/post_list2.html'
 
 class PostDetail(DeleteView):
     model = Post
@@ -17,7 +17,7 @@ class PostDetail(DeleteView):
 #
 #     return render(
 #         request,
-#         'blog/post_list.html',
+#         'blog/post_list2.html',
 #         {
 #             'posts': posts,
 #         }
