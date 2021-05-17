@@ -1,12 +1,18 @@
 from django.shortcuts import render
-from .models import Post
+from .models import Post, Category
 from django.views.generic import ListView, DeleteView
 
 # Create your views here.
 class PostList(ListView):
     model = Post
     ordering = '-pk'
-    # template_name = 'blog/post_list2.html'
+    # template_name = 'blog/post_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(PostList, self).get_context_data()
+        context['categories'] = Category.objects.all()
+        context['no_category_post_count'] = Post.objects.filter(category=None).count()
+        return context
 
 class PostDetail(DeleteView):
     model = Post
@@ -17,7 +23,7 @@ class PostDetail(DeleteView):
 #
 #     return render(
 #         request,
-#         'blog/post_list2.html',
+#         'blog/post_list.html',
 #         {
 #             'posts': posts,
 #         }
