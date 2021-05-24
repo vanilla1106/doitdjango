@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Post, Category
-from django.views.generic import ListView, DeleteView
+from django.views.generic import ListView, DeleteView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 class PostList(ListView):
@@ -43,24 +44,16 @@ def category_page(request, slug):
            }
        )
 
-# def index(request):
-#     posts = Post.objects.all().order_by('-pk')
-#
-#     return render(
-#         request,
-#         'blog/post_list.html',
-#         {
-#             'posts': posts,
-#         }
-#     )
+class PostCreate(LoginRequiredMixin, CreateView):
+    model = Post
+    fields = ['title', 'hook_text', 'content', 'head_image', 'file_upload', 'category']
 
-# def single_post_page(request, pk):
-#     post = Post.objects.get(pk=pk)
-#
-#     return render(
-#         request,
-#         'blog/post_confirm_delete.html',
-#         {
-#             'post': post,
-#         }
-#     )
+    def form_valid(self, form):
+        current_user = self.request.user
+        if current_user.is_authenticated:
+            form.instance.author = current_user
+            return super(PostCreate, self).form_valid(form)
+        else:
+            return redirect('/blog/')
+
+

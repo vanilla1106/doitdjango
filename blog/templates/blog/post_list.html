@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 
         {% block main_area %}
-            <h1>김서연의 블로그
+            <h1>Blog
                  {% if category %}<span class="badge badge-secondary">
                     {{ category }}</span>{% endif %}</h1>
             {% if post_list.exists %}
@@ -20,8 +20,8 @@
                       <span class="badge badge-secondary float-right">{{ p.category }}</span>
                       {% else %}
                       <span class="badge badge-secondary float-right">미분류</span>
-                      <h2 class="card-title">{{ p.title }}</h2>
                       {% endif %}
+                      <h2 class="card-title">{{ p.title }}</h2>
                       {% if p.hook_text %}
                       <h5 class="text-muted"> {{ p.hook_text }} </h5>
                       {% endif %}
