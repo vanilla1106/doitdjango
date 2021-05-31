@@ -46,7 +46,7 @@
         <hr>
 
         <!-- Post Content -->
-        <p>{{ post.content }}</p>
+        <p>{{ post.get_content_markdown | safe }}</p>
 
         {% if post.file_upload %}
         <a href="{{ post.file_upload.url }}" role="button" class="btn btn-primary" download>
