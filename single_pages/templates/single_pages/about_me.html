@@ -3,10 +3,10 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title> Do It Django </title>
+    <title> About 김서연 </title>
 
     <link href="{% static 'blog/bootstrap/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'single_pages/css/landing.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'single_pages/css/about_me.css' %}" rel="stylesheet" type="text/css">
         <script src="https://kit.fontawesome.com/765d008ba4.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -14,33 +14,172 @@
 {% include 'blog/navbar.html' %}
 
 <section>
-    <div class="container">
-        <div class="row justify-content-between">
-            <div class="col-lg-6 text-light">
-                <h1 class="mt-5">Do It Django</h1>
-                <p>파이썬 진영의 가장 대표적인 웹프레임워크 중 하나인 django를 이용하여
-                    여러분만의 사이트를 만들어보세요.</p>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1>안녕하세요. 김서연입니다.</h1>
+                <br/>
+                <p class="lead">
+                    현재 호서대학교에 재학중입니다. 장고를 이용한 웹사이트 제작을 공부하고 있습니다.
+                    <br/>
+                </p>
+                <ul>
+                    <li>WORK EXPERIENCE</li>
+                    <ul>
+                        <li>호서대학교 - 디지털기술경영 (2019. 03 ~ )</li>
+                    </ul>
+
+                    <li>EDUCATION</li>
+                    <ul>
+                        <li>호서대 경영학사, 디지털기술경영전공</li>
+                    </ul>
+
+                    <li>PUBLISH</li>
+                    <ul>
+                        <li>DO IT DHANGO, 고급웹프로그래밍</li>
+                    </ul>
+                </ul>
             </div>
-            <div class="col-lg-5 mt-5">
-                <h2 class="text-light">Blog - Recent posts</h2>
-                {% for post in recent_posts %}
-                   <div class="card mt-1">
-                       <div class="card-body">
-                           <h6><a href="{{ post.get_absolute_url }}" class="text-decoration-none text-dark">{{ post.title }}</a></h6>
-                           <span class="badge badge-pill badge-light float-right">
-                                <img class="mr-1 rounded-circle" width="20px" src="{{ post.get_avatar_url }}">
-                               {{ post.author.username }}
-                               &nbsp;
-                               &nbsp;
-                               {{ post.created_at }}
-                           </span>
-                       </div>
-                   </div>
-                {% endfor %}
+            <div class="col-lg-4">
+                <img class="img-fluid" src="{% static 'single_pages/images/my_back.png' %}">
             </div>
         </div>
     </div>
 </section>
+
+<section class="bg-light margin-for-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>PORTFOLIO</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card" data-toggle="modal" data-target="#pycon2017">
+                    <img class="card-img-top" src="{% static 'single_pages/images/pycon_sy_2017.png' %}">
+                    <div class="card-body">
+                        <h5 class="card-title">파이썬으로 통계업무 자동화하기 [PYCON 2017]</h5>
+                        <p>Python, Django, Pandas, Pythons-docx로 통계업무 자동화한 내용을 파이콘에서 발표했습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card" data-toggle="modal" data-target="#inflearn_django2">
+                    <img class="card-img-top" src="{% static 'single_pages/images/inflearn_django2.png' %}">
+                    <div class="card-body">
+                        <h5 class="card-title">파이썬 사용자를 위한 웹개발 입문 A to Z Django + Bootstrap</h5>
+                        <p>파이썬 웹개발에 대한 인프런 동영상 강의입니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card" data-toggle="modal" data-target="#automation_python">
+                    <img class="card-img-top" src="{% static 'single_pages/images/automation_python.png' %}">
+                    <div class="card-body">
+                        <h5 class="card-title">직장인을 위한 프로그래밍 입문과 업무자동화 활용</h5>
+                        <p>파이썬 업무자동화에 대한 인프런 동영상 강의입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal1 -->
+<div class="modal fade" id="pycon2017" tabindex="-1" role="dialog" aria-labelledby="python2017ModalLabal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="python2017ModalLabal">
+                    파이썬으로 통계업무 자동화하기 [PYCON 2017]
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-7">
+                    <img class="img-fluid" src="{% static 'single_pages/images/pycon_sy_2017.png' %}">
+                </div>
+                 <div class="col-lg-5">
+                     <p>
+                         Python, Django, Pandas, Pythons-docx로 통계업무 자동화한 내용을 파이콘에서 발표했습니다.
+                     </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal2 -->
+<div class="modal fade" id="inflearn_django2" tabindex="-1" role="dialog" aria-labelledby="inflearnDjangoModalLabal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="inflearnDjangoModalLabal">
+                    파이썬 사용자를 위한 웹개발 입문 A to Z Django + Bootstrap
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-7">
+                    <img class="img-fluid" src="{% static 'single_pages/images/inflearn_django2.png' %}">
+                </div>
+                 <div class="col-lg-5">
+                     <p>
+                         파이썬 웹개발에 대한 인프런 동영상 강의입니다.
+                     </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal3 -->
+<div class="modal fade" id="automation_python" tabindex="-1" role="dialog" aria-labelledby="automationPythonModalLabal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="automationPythonModalLabal">
+                    직장인을 위한 프로그래밍 입문과 업무자동화 활용
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-lg-7">
+                    <img class="img-fluid" src="{% static 'single_pages/images/automation_python.png' %}">
+                </div>
+                 <div class="col-lg-5">
+                     <p>
+                         파이썬 업무자동화에 대한 인프런 동영상 강의입니다.
+                     </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="fixed-bottom">
 {% include 'blog/footer.html' %}
