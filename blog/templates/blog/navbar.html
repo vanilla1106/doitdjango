@@ -30,6 +30,18 @@
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                        role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                      {% if user is not None %}
+                           {% if user.socialaccount_set.all.0.get_avater_url %}
+                              <img class="mr-1 rounded-circle" width="25px" src="{{ user.socialaccount_get.all.0.get_avatar_url }}">
+                           {% else %}
+                              <img class="mr-1 rounded-circle" width="25px" src="https://avatars.dicebear.com/api/human/{user.email}.svg">
+                           {% endif %}
+                      {% else %}
+                           <img class="mr-1 rounded-circle" width="25px" src="http://placehold.it/50x50">
+                      {% endif %}
+                      &nbsp;
+
                       {{ user.username }}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

@@ -46,3 +46,12 @@ class Post(models.Model):
 
     def get_content_markdown(self):
         return markdown(self.content)
+
+    def get_avatar_url(self):
+        if self.author is not None:
+            if self.author.socialaccount_set.exists():
+                return self.author.socialaccount_set.first().get_avatar_url()
+            else:
+                return f'https://avatars.dicebear.com/api/human/{self.author.email}.svg'
+        else:
+            return 'http://placehold.it/50x50'
